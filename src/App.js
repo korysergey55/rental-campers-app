@@ -1,5 +1,6 @@
 import React, {Suspense, lazy} from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom';
+import Footer from './components/footer/Footer';
 
 import Header from './components/header/Header';
 import Loader from './components/loader/Loader';
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </Suspense>
+      <Footer/>
     </div>
   );
 };

@@ -1,0 +1,24 @@
+@import '../../../../sourses/styles/variebles.scss';
+.list{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: 24px;
+
+  .item{
+    padding: 12px 18px;
+       border-radius: 20px;
+    background-color: $brandColorLightGrey;
+
+    .text{
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.25;
+      text-transform: capitalize;
+      color: $textColor;
+    }
+  }
+}
