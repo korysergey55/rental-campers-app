@@ -8,6 +8,7 @@ const HomePage = lazy (() => import ('./pages/homePage/HomePage'));
 const CatalogPage = lazy (() => import ('./pages/catalogPage/CatalogPage'));
 const FavoritesPage = lazy (() => import ('./pages/favoritesPage/FavoritesPage'));
 
+
 const App = () => {
   return (
     <div>
@@ -15,7 +16,9 @@ const App = () => {
       <Suspense fallback={<Loader/>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/catalog" element={<CatalogPage />}>
+
+          </Route>
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

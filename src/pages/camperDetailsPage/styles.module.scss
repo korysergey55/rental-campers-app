@@ -1,0 +1,130 @@
+@import '../../sourses/styles/variebles.scss';
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  width: 100%;
+  padding: 12px;
+
+  .contentWripper {
+    width: 100%;
+
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: $textColor;
+    }
+    .wripper {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 8px;
+
+      .reviewsWripper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 4px;
+
+        .reviewsIcon {
+          width: 16px;
+          height: 16px;
+        }
+        .reviewsText {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.5;
+          color: $textColor;
+        }
+      }
+      .locationWripper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 4px;
+        .locationIcon {
+          fill: transparent;
+          stroke: $textColor;
+          width: 16px;
+          height: 16px;
+        }
+        .locationText {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.5;
+          color: $textColor;
+        }
+      }
+    }
+    .price {
+      margin-top: 16px;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: $textColor;
+    }
+    .imageList {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .imageWripper {
+        width: 100%;
+        max-width: fit-content;
+        height: 310px;
+
+        margin-top: 24px;
+
+        overflow: hidden;
+        border-radius: 10px;
+
+        .image {
+          width: 100%;
+          min-width: 310px;
+
+          height: 100%;
+        }
+      }
+    }
+    .description {
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 24px;
+      margin-bottom: 44px;
+      color: $brandColorGrey;
+    }
+    .routsWripper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+
+      .routsTitle {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.2;
+
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .item {
+    flex-wrap: nowrap;
+    gap: 24px;
+
+    padding: 24px;
+  }
+}

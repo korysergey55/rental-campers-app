@@ -126,8 +126,7 @@
       border-radius: 30px;
       color: white;
       background-color: $brandColorRed;
-       transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-   
+      transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
       &:hover,
       &:focus {
@@ -152,8 +151,6 @@
       .titleWripper {
         .priceWripper {
           .favoriteIcon {
-            // transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            // transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
             &:hover {
               cursor: pointer;
               fill: $brandColorRed;

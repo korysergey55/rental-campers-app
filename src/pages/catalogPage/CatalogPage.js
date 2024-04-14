@@ -4,7 +4,7 @@ import {getAllCampersThunk} from '../../redax/thunks/thunks';
 import {
   getAllCampersSelector,
   getResponseLengthSelector,
-} from '../../redax/selectors/selectors';
+ } from '../../redax/selectors/selectors';
 
 import CatalogList from '../../components/catalogList/CatalogList';
 import styles from './styles.module.scss';
@@ -13,6 +13,7 @@ const CatalogPage = () => {
   const dispatch = useDispatch ();
   const campers = useSelector (getAllCampersSelector);
   const responseLength = useSelector (getResponseLengthSelector);
+
   const [page, setPage] = useState (1);
 
   useEffect (
@@ -31,9 +32,9 @@ const CatalogPage = () => {
   return (
     <div className={styles.container}>
       {campers.length > 0 && <CatalogList />}
-      <button type="button" className={styles.button} onClick={onChangePage}>
+      {responseLength > 3 && <button type="button" className={styles.button} onClick={onChangePage}>
         Load more
-      </button>
+      </button>}
     </div>
   );
 };

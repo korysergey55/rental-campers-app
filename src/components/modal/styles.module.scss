@@ -1,0 +1,53 @@
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(123, 123, 123, 0.3);
+  z-index: 1200;
+
+  .Modal {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 24px);
+
+    margin: 0 auto;
+    padding: 40px;
+
+    background-color: white;
+    border-radius: 15px;
+    overflow-y: scroll;
+  }
+}
+
+.closeModal {
+  position: absolute;
+  top: 5%;
+  left: 88%;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+
+  .crosIcon {
+    width: 32px;
+    height: 32px;
+    fill: black;
+    stroke: black;
+  }
+}
+.closeModal:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .closeModal {
+    top: 5%;
+    left: 95%;
+  }
+}

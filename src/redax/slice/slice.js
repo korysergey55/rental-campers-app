@@ -9,6 +9,7 @@ const initialState = {
     responseLength: 0,
   },
   filter: '',
+  modal: false,
 };
 
 const handleFulfildAllCampers = (state, {payload, meta}) => {
@@ -35,6 +36,11 @@ const campersSlice = createSlice ({
   name: 'campers',
   initialState,
   reducers: {
+
+    setModal: (state) => {
+      state.modal = !state.modal;
+    },
+
     setFilter: (state, {payload}) => {
       state.filter = payload;
     },
@@ -50,5 +56,5 @@ const campersSlice = createSlice ({
       .addCase (getAllCampersThunk.rejected, handleRejected);
   },
 });
-export const {setCampers, setFilter, resetFilter} = campersSlice.actions;
+export const {setCampers,setModal, setFilter, resetFilter} = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

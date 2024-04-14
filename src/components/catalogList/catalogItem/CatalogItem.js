@@ -1,12 +1,24 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setModal } from '../../../redax/slice/slice';
+import { getModalSelector } from '../../../redax/selectors/selectors';
+
 import ReadMore from './readMore/ReadMore';
 import CategoriesList from './categoriesList/CategoriesList';
+import CamperDetailsPage from '../../../pages/camperDetailsPage/CamperDetailsPage';
+import Modal from '../../modal/Modal';
 
 import styles from './styles.module.scss';
 import sprite from '../../../sourses/icons/sprite.svg';
 
 const CatalogItem = ({item}) => {
-  console.log (item);
+  const modal = useSelector(getModalSelector)
+  const dispatch = useDispatch()
+
+  const handleShowMore = ()=>{
+    dispatch(setModal())
+  }
+  // console.log (item);
   return (
     <li className={styles.item}>
       <div className={styles.imageWripper}>
@@ -44,7 +56,11 @@ const CatalogItem = ({item}) => {
         </div>
         <ReadMore text={item.description} />
         <CategoriesList data={item.details}/>
-        <button type='button' className={styles.button} onClick={()=>{}}>Show more</button>
+        <button type='button' className={styles.button} onClick={handleShowMore}>Show more</button>
+        {modal && 
+        <Modal>
+          <CamperDetailsPage item={item}/>
+        </Modal>}
       </div>
     </li>
   );
