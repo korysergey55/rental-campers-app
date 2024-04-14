@@ -1,49 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {getCamperById} from '../../redax/selectors/selectors';
+import {setCamperId} from '../../redax/slice/slice';
+
+import CamperDetails from '../../components/camperDetails/CamperDetails';
 
 import styles from './styles.module.scss';
-import sprite from '../../sourses/icons/sprite.svg';
 
-const CamperDetailsPage = ({item}) => {
-  console.log (item);
+const CamperDetailsPage = () => {
+  const {camperId} = useParams ();
+  const item = useSelector (getCamperById);
+  const dispatch = useDispatch ();
+
+  useEffect (
+    () => {
+      if (camperId) {
+        dispatch (setCamperId (camperId));
+      }
+    },
+    [camperId, dispatch]
+  );
+
   return (
-    <li className={styles.item}>
-      <div className={styles.contentWripper}>
-        <h2 className={styles.title}>{item.name}</h2>
-        <div className={styles.wripper}>
-          <div className={styles.reviewsWripper}>
-            <svg className={styles.reviewsIcon} aria-label="icon-star">
-              <use href={sprite + '#icon-star'} />
-            </svg>
-            <p className={styles.reviewsText}>
-              {item.rating}({item.reviews.length} Reviews)
-            </p>
-          </div>
-          <div className={styles.locationWripper}>
-            <svg className={styles.locationIcon} aria-label="icon-location">
-              <use href={sprite + '#icon-location'} />
-            </svg>
-            <p className={styles.locationText}>{item.location}</p>
-          </div>
-        </div>
-        <h2 className={styles.price}>{'\u20AC'}{item.price}.00</h2>
-        <ul className={styles.imageList}>
-          {item.gallery.map (image => (
-            <li className={styles.imageWripper}>
-              <img
-                className={styles.image}
-                src={image}
-                alt={item.name + 'image'}
-              />
-            </li>
-          ))}
-        </ul>
-        <p className={styles.description}>{item.description}</p>
-        <div className={styles.routsWripper}>
-          <h2 className={styles.routsTitle}>Features</h2>
-          <h2 className={styles.routsTitle}>Reviews</h2>
-        </div>
-      </div>
-    </li>
+    <div className={styles.container}>
+      <CamperDetails item={item} />
+    </div>
   );
 };
 

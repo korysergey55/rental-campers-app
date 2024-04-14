@@ -5,20 +5,23 @@ import { getModalSelector } from '../../../redax/selectors/selectors';
 
 import ReadMore from './readMore/ReadMore';
 import CategoriesList from './categoriesList/CategoriesList';
-import CamperDetailsPage from '../../../pages/camperDetailsPage/CamperDetailsPage';
+import CamperDetails from '../../camperDetails/CamperDetails';
 import Modal from '../../modal/Modal';
 
 import styles from './styles.module.scss';
 import sprite from '../../../sourses/icons/sprite.svg';
+import { useNavigate } from 'react-router-dom';
 
 const CatalogItem = ({item}) => {
   const modal = useSelector(getModalSelector)
   const dispatch = useDispatch()
+ const navigate = useNavigate()
 
   const handleShowMore = ()=>{
-    dispatch(setModal())
+    // dispatch(setModal())
+    navigate(`/catalog/${item._id}`)
   }
-  // console.log (item);
+
   return (
     <li className={styles.item}>
       <div className={styles.imageWripper}>
@@ -57,10 +60,10 @@ const CatalogItem = ({item}) => {
         <ReadMore text={item.description} />
         <CategoriesList data={item.details}/>
         <button type='button' className={styles.button} onClick={handleShowMore}>Show more</button>
-        {modal && 
+        {/* {modal && 
         <Modal>
-          <CamperDetailsPage item={item}/>
-        </Modal>}
+          <CamperDetails item={item}/>
+        </Modal>} */}
       </div>
     </li>
   );

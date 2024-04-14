@@ -7,6 +7,8 @@ const initialState = {
     isLoading: false,
     error: null,
     responseLength: 0,
+    itemId: '',
+    favorites: [],
   },
   filter: '',
   modal: false,
@@ -36,8 +38,15 @@ const campersSlice = createSlice ({
   name: 'campers',
   initialState,
   reducers: {
+    setFavorite: (state, {payload}) => {
+      state.campers.campers.favorites.push (payload);
+    },
 
-    setModal: (state) => {
+    setCamperId: (state, {payload}) => {
+      state.campers.itemId = payload;
+    },
+
+    setModal: state => {
       state.modal = !state.modal;
     },
 
@@ -56,5 +65,11 @@ const campersSlice = createSlice ({
       .addCase (getAllCampersThunk.rejected, handleRejected);
   },
 });
-export const {setCampers,setModal, setFilter, resetFilter} = campersSlice.actions;
+export const {
+  setCampers,
+  setModal,
+  setCamperId,
+  setFilter,
+  resetFilter,
+} = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;
