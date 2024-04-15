@@ -1,0 +1,54 @@
+@import '../../sourses/styles/variebles.scss';
+.container {
+  padding-top: 44px;
+  .wripper {
+    .review {
+      margin-bottom: 24px;
+      .reviewerWripper {
+        display: flex;
+        justify-content: flex-start;
+        gap: 16px;
+        .avatar {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-color: $brandColorLightGrey;
+
+          .text {
+            font-size: 24;
+            font-weight: 600;
+            color: $brandColorRed;
+          }
+        }
+        .ratingWripper {
+          .name {
+            margin-bottom: 4px;
+          }
+          .starlist {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 4px;
+
+            .item {
+              .starIcon {
+                width: 16px;
+                height: 16px;
+              }
+            }
+          }
+        }
+      }
+      .comment {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: $brandColorGrey;
+      }
+    }
+  }
+}

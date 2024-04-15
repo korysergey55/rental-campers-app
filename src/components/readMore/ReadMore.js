@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
 
-const ReadMore = ({text, quontyty = 55}) => {
+const ReadMore = ({text='', quontyty = 55}) => {
   const [isReadMore, setIsReadMore] = useState(true);
-  const toggleReadMore = () => {setIsReadMore(!isReadMore)};
+  const toggleReadMore = () => setIsReadMore(!isReadMore);
 
   return (
     <p className={styles.reedMoreText}>

@@ -1,0 +1,165 @@
+@import '../../sourses/styles/variebles.scss';
+
+.container {
+  .form {
+    .inputContainer {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 8px;
+
+      .label {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.5;
+        color: rgba(16, 24, 40, 0.6);
+      }
+
+      .input {
+        width: 100%;
+        max-width: 360px;
+        height: 56px;
+
+        border: transparent;
+        border-radius: 10px;
+        padding: 18px 18px 18px 40px;
+        background-color: $brandColorWhite;
+        background-image: url('../../sourses/images/map-pin.jpg');
+        background-repeat: no-repeat;
+        background-position: 4%;
+
+        &:focus {
+          outline: 1px solid $brandColorYelow;
+        }
+      }
+    }
+    .subtitle {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: rgba(16, 24, 40, 0.6);
+
+      margin-top: 32px;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-top: 14px;
+    }
+    .list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      margin-top: 20px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(16, 24, 40, 0.1);
+
+      .item {
+        .button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 8px;
+
+          width: 115px;
+          height: 95px;
+          margin: 0;
+          padding: 0;
+
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.4;
+
+          border-radius: 10px;
+          border: 1px solid rgba(16, 24, 40, 0.2);
+          color: $textColor;
+          background-color: transparent;
+          transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+          &:hover {
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          }
+          
+          .btnIcon{
+            width: 32px;
+            height: 32px;
+            fill: black;
+            stroke: black;
+          }
+        }
+        .buttonActive {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 8px;
+
+          width: 115px;
+          height: 95px;
+          margin: 0;
+          padding: 0;
+
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.4;
+
+          border-radius: 10px;
+          border: 1px solid $brandColorRed;
+          color: $textColor;
+          outline: transparent;
+          background-color: transparent;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          .btnIcon{
+            width: 32px;
+            height: 32px;
+            fill: black;
+            stroke: black;
+          }
+        }
+       
+      }
+    }
+    .title2 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-top: 32px;
+    }
+    .button {
+      width: 100%;
+      max-width: 173px;
+      height: 56px;
+
+      margin-top: 64px;
+      margin-bottom: 40px;
+      padding: 16px 60px;
+
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+
+      border: none;
+      border-radius: 30px;
+      color: white;
+      background-color: $brandColorRed;
+      outline: transparent;
+      transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+    }
+  }
+}

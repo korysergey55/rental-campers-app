@@ -1,41 +1,32 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setModal } from '../../../redax/slice/slice';
-import { getModalSelector } from '../../../redax/selectors/selectors';
+import { useNavigate } from 'react-router-dom';
 
-import ReadMore from './readMore/ReadMore';
-import CategoriesList from './categoriesList/CategoriesList';
-import CamperDetails from '../../camperDetails/CamperDetails';
-import Modal from '../../modal/Modal';
+import ReadMore from '../../readMore/ReadMore';
+import CategoriesList from '../../categoriesList/CategoriesList';
 
 import styles from './styles.module.scss';
 import sprite from '../../../sourses/icons/sprite.svg';
-import { useNavigate } from 'react-router-dom';
 
-const CatalogItem = ({item}) => {
-  const modal = useSelector(getModalSelector)
-  const dispatch = useDispatch()
- const navigate = useNavigate()
+const CatalogItem = ({ item }) => {
+  const navigate = useNavigate();
 
-  const handleShowMore = ()=>{
-    // dispatch(setModal())
-    navigate(`/catalog/${item._id}`)
-  }
+  const handleShowMore = () => {
+    navigate(`/catalog/${item._id}`);
+  };
 
   return (
     <li className={styles.item}>
       <div className={styles.imageWripper}>
-        <img
-          className={styles.image}
-          src={item.gallery[0]}
-          alt={item.name + 'image'}
-        />
+        <img className={styles.image} src={item.gallery[0]} alt={item.name + 'image'} />
       </div>
       <div className={styles.contentWripper}>
         <div className={styles.titleWripper}>
           <h2 className={styles.title}>{item.name}</h2>
           <div className={styles.priceWripper}>
-            <h2 className={styles.price}>{'\u20AC'}{item.price}.00</h2>
+            <h2 className={styles.price}>
+              {'\u20AC'}
+              {item.price}.00
+            </h2>
             <svg className={styles.favoriteIcon} aria-label="icon-favorite">
               <use href={sprite + '#icon-favorite'} />
             </svg>
@@ -58,12 +49,10 @@ const CatalogItem = ({item}) => {
           </div>
         </div>
         <ReadMore text={item.description} />
-        <CategoriesList data={item.details}/>
-        <button type='button' className={styles.button} onClick={handleShowMore}>Show more</button>
-        {/* {modal && 
-        <Modal>
-          <CamperDetails item={item}/>
-        </Modal>} */}
+        <CategoriesList data={item.details} />
+        <button type="button" className={styles.button} onClick={handleShowMore}>
+          Show more
+        </button>
       </div>
     </li>
   );

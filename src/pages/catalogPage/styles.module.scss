@@ -1,9 +1,15 @@
-
 @import '../../sourses/styles/variebles.scss';
 
-.container{
-  flex: 1;
-  min-height: 100vh;
+.container {
+  padding: 24px;
+  .wripper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+ }
+
   .button {
     display: block;
     width: 100%;
@@ -22,8 +28,8 @@
     border-radius: 30px;
     color: $textColor;
     background-color: white;
-     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
- 
+    outline: transparent;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,
     &:focus {
@@ -32,8 +38,12 @@
     }
   }
 }
-@media screen and (min-width:768px) {
-  .container{
+@media screen and (min-width: 1280px) {
+  .container {
     padding: 100px 64px;
+
+    .wripper {
+      flex-wrap: nowrap;
+        }
   }
 }
