@@ -1,9 +1,12 @@
 @import '../../sourses/styles/variebles.scss';
 .container {
-  .wripper {
-    width: 50%;
-    padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 44px;
 
+  .wripper {
     .title {
       margin-top: 44px;
       font-size: 20px;
@@ -34,6 +37,14 @@
           line-height: 1.33;
         }
       }
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    justify-content: space-between;
+    .wripper {
+      width: 50%;
     }
   }
 }

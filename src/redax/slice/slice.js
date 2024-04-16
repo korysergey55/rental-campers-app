@@ -1,5 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {getAllCampersThunk} from '../thunks/thunks';
+import { createSlice } from '@reduxjs/toolkit';
+import { getAllCampersThunk } from '../thunks/thunks';
 
 const initialState = {
   campers: {
@@ -12,15 +12,16 @@ const initialState = {
   },
   filter: '',
   modal: false,
+  bookFormData: {},
 };
 
-const handleFulfildAllCampers = (state, {payload, meta}) => {
+const handleFulfildAllCampers = (state, { payload, meta }) => {
   if (meta.arg === 1) {
     state.campers.items = payload;
     state.campers.isLoading = false;
     state.campers.responseLength = payload.length;
   } else {
-    state.campers.items.push (...payload);
+    state.campers.items.push(...payload);
     state.campers.isLoading = false;
     state.campers.responseLength = payload.length;
   }
@@ -29,28 +30,32 @@ const handleFulfildAllCampers = (state, {payload, meta}) => {
 const handlePanding = state => {
   state.campers.isLoading = true;
 };
-const handleRejected = (state, {error}) => {
+const handleRejected = (state, { error }) => {
   state.campers.isLoading = false;
   state.campers.error = error.message;
 };
 
-const campersSlice = createSlice ({
+const campersSlice = createSlice({
   name: 'campers',
   initialState,
   reducers: {
-    setFavorite: (state, {payload}) => {
-      state.campers.campers.favorites.push (payload);
+    setFavorite: (state, { payload }) => {
+      state.campers.campers.favorites.push(payload);
     },
 
-    setCamperId: (state, {payload}) => {
+    setCamperId: (state, { payload }) => {
       state.campers.itemId = payload;
+    },
+
+    setBookFormData: (state, { payload }) => {
+      state.bookFormData = payload;
     },
 
     setModal: state => {
       state.modal = !state.modal;
     },
 
-    setFilter: (state, {payload}) => {
+    setFilter: (state, { payload }) => {
       state.filter = payload;
     },
 
@@ -60,16 +65,10 @@ const campersSlice = createSlice ({
   },
   extraReducers: builder => {
     builder
-      .addCase (getAllCampersThunk.fulfilled, handleFulfildAllCampers)
-      .addCase (getAllCampersThunk.pending, handlePanding)
-      .addCase (getAllCampersThunk.rejected, handleRejected);
+      .addCase(getAllCampersThunk.fulfilled, handleFulfildAllCampers)
+      .addCase(getAllCampersThunk.pending, handlePanding)
+      .addCase(getAllCampersThunk.rejected, handleRejected);
   },
 });
-export const {
-  setCampers,
-  setModal,
-  setCamperId,
-  setFilter,
-  resetFilter,
-} = campersSlice.actions;
+export const { setCampers, setModal, setCamperId, setBookFormData, setFilter, resetFilter } = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

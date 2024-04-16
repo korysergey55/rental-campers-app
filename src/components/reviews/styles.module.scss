@@ -1,5 +1,9 @@
 @import '../../sourses/styles/variebles.scss';
 .container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
   padding-top: 44px;
   .wripper {
     .review {
@@ -49,6 +53,14 @@
         line-height: 1.5;
         color: $brandColorGrey;
       }
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    justify-content: space-between;
+    .wripper {
+      width: 50%;
     }
   }
 }

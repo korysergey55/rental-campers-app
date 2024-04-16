@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getCamperById } from '../../redax/selectors/selectors';
 import { v4 as uuidv4 } from 'uuid';
 
+import BookForm from '../bookForm/BookForm';
 import styles from './styles.module.scss';
 import sprite from '../../sourses/icons/sprite.svg';
 
@@ -43,6 +44,7 @@ const Reviews = () => {
           </div>
         ))}
       </div>
+      <BookForm />
     </div>
   );
 };

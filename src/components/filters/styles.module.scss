@@ -85,12 +85,12 @@
             cursor: pointer;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           }
-          
-          .btnIcon{
+
+          .btnIcon {
             width: 32px;
             height: 32px;
-            fill: black;
-            stroke: black;
+            fill: $textColor;
+            stroke: $textColor;
           }
         }
         .buttonActive {
@@ -119,14 +119,13 @@
             cursor: pointer;
           }
 
-          .btnIcon{
+          .btnIcon {
             width: 32px;
             height: 32px;
-            fill: black;
-            stroke: black;
+            fill: $textColor;
+            stroke: $textColor;
           }
         }
-       
       }
     }
     .title2 {
