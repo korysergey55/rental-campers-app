@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import ReadMore from '../../readMore/ReadMore';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavorite } from '../../../redax/slice/slice';
 import { getFavoritsIdSelector } from '../../../redax/selectors/selectors';
 
 import CategoriesList from '../../categoriesList/CategoriesList';
+import ReadMore from '../../readMore/ReadMore';
 
 import styles from './styles.module.scss';
 import sprite from '../../../sourses/icons/sprite.svg';
@@ -22,7 +22,6 @@ const CatalogItem = ({ item }) => {
 
   const onChangeFavorite = () => {
     dispatch(setFavorite(item._id));
-    console.log(item._id);
   };
 
   return (

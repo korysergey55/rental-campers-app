@@ -9,7 +9,7 @@ import image3 from '../../sourses/images/home-3.jpg';
 const HomePage = () => {
   const navigate = useNavigate();
   return (
-    <>
+    <section className={styles.homePage}>
       <div className={styles.hero}>
         <h1 className={styles.title}>Your vacation starts with Worldwide Campers</h1>
       </div>
@@ -81,7 +81,7 @@ const HomePage = () => {
         </p>
         <div className={styles.viev}></div>
       </div>
-    </>
+    </section>
   );
 };
 
