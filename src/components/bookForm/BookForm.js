@@ -19,12 +19,19 @@ const BookForm = () => {
     const { name, value } = evt.target;
     setState(prev => ({ ...prev, [name]: value }));
   };
-  console.log(state);
 
   const handleSubmit = evt => {
     evt.preventDefault();
     dispatch(setBookFormData(state));
     setState(initialState);
+  };
+
+  const getDateValidator = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth();
+    const day = date.getDate();
+    return `${year}-${month}-${day}`;
   };
 
   return (
@@ -59,6 +66,7 @@ const BookForm = () => {
           placeholder="Booking date"
           required
           minLength={2}
+          min={getDateValidator()}
           onChange={handleChange}
         />
         <input

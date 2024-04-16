@@ -21,20 +21,20 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getAllCampersThunk(1));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
       <Headroom>
-      <Header />
+        <Header />
       </Headroom>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog/:camperId" element={<CamperDetailsPage />}>
-            <Route path="features" element={<Features/>}/>
-            <Route path="reviews" element={<Reviews/>}/>
+            <Route path="features" element={<Features />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="*" element={<Navigate replace to="/" />} />

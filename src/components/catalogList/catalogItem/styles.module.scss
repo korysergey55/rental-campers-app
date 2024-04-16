@@ -63,6 +63,16 @@
             stroke: $brandColorRed;
           }
         }
+        .favoriteIconActive {
+          width: 24px;
+          height: 24px;
+          fill: $brandColorRed;
+          stroke: $brandColorRed;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
     .wripper {

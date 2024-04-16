@@ -40,7 +40,12 @@ const campersSlice = createSlice({
   initialState,
   reducers: {
     setFavorite: (state, { payload }) => {
-      state.campers.campers.favorites.push(payload);
+      console.log(payload);
+      if (state.campers.favorites.includes(payload)) {
+        state.campers.favorites = state.campers.favorites.filter(item => item !== payload);
+      } else {
+        state.campers.favorites.push(payload);
+      }
     },
 
     setCamperId: (state, { payload }) => {
@@ -70,5 +75,6 @@ const campersSlice = createSlice({
       .addCase(getAllCampersThunk.rejected, handleRejected);
   },
 });
-export const { setCampers, setModal, setCamperId, setBookFormData, setFilter, resetFilter } = campersSlice.actions;
+export const { setCampers, setModal, setCamperId, setBookFormData, setFavorite, setFilter, resetFilter } =
+  campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

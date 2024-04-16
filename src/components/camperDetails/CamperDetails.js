@@ -6,7 +6,6 @@ import styles from './styles.module.scss';
 import sprite from '../../sourses/icons/sprite.svg';
 
 const CamperDetails = ({ item }) => {
-
   return (
     <>
       {item && (

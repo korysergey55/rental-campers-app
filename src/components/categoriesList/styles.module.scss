@@ -1,5 +1,5 @@
 @import '../../sourses/styles/variebles.scss';
-.list{
+.list {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -8,12 +8,24 @@
 
   margin-top: 24px;
 
-  .item{
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
     padding: 12px 18px;
-       border-radius: 20px;
+    border-radius: 20px;
     background-color: $brandColorLightGrey;
 
-    .text{
+    .categoryIcon {
+      width: 20px;
+      height: 20px;
+      fill: $textColor;
+      stroke: $textColor;
+    }
+
+    .text {
       font-size: 16px;
       font-weight: 500;
       line-height: 1.25;

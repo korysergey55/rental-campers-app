@@ -1,4 +1,19 @@
-.container{
+@import '../../sourses/styles/variebles.scss';
+.container {
   flex: 1;
   min-height: 100vh;
+  padding: 100px 64px;
+
+  .list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .title {
+    text-align: center;
+    color: $textColor;
+  }
 }
