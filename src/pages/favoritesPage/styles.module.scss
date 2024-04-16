@@ -2,7 +2,8 @@
 .container {
   flex: 1;
   min-height: 100vh;
-  padding: 100px 64px;
+  padding: 24px;
+  padding: 24px;
 
   .list {
     display: flex;
@@ -13,7 +14,17 @@
   }
 
   .title {
-    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.25;
     color: $textColor;
+
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    padding: 100px 64px;
   }
 }
