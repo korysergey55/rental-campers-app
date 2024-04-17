@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Lightbox from 'yet-another-react-lightbox';
@@ -7,7 +7,19 @@ import styles from './styles.module.scss';
 import sprite from '../../sourses/icons/sprite.svg';
 
 const CamperDetails = ({ item }) => {
-  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(-1);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    if (item && item.gallery.length) {
+      setImages(
+        item.gallery.map(item => ({
+          src: item,
+        }))
+      );
+    }
+  }, [item]);
+
   return (
     <>
       {item && (
@@ -35,9 +47,9 @@ const CamperDetails = ({ item }) => {
               {item.price}.00
             </h2>
             <ul className={styles.imageList}>
-              {item?.gallery?.map(image => (
+              {item?.gallery?.map((image, index) => (
                 <li className={styles.imageWripper} key={uuidv4()}>
-                  <img className={styles.image} src={image} alt={item.name} onClick={() => setOpen(true)} />
+                  <img className={styles.image} src={image} alt={item.name} onClick={() => setIndex(index)} />
                 </li>
               ))}
             </ul>
@@ -58,15 +70,7 @@ const CamperDetails = ({ item }) => {
           </div>
         </li>
       )}
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={[
-          ...item?.gallery?.map(item => ({
-            src: item,
-          })),
-        ]}
-      />
+      <Lightbox index={index} open={index >= 0} close={() => setIndex(-1)} slides={[...images]} />
     </>
   );
 };

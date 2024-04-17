@@ -7,7 +7,6 @@ import { setCamperId } from '../../redax/slice/slice';
 
 import CamperDetails from '../../components/camperDetails/CamperDetails';
 import Footer from '../../components/footer/Footer';
-
 import styles from './styles.module.scss';
 
 const CamperDetailsPage = () => {

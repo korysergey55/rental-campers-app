@@ -21,10 +21,3 @@ export const getFavoritsCamperSelector = createSelector(
     return getCampersSelector?.filter(camper => getFavoritsIdSelector.includes(camper._id));
   }
 );
-
-export const filterCampersSelector = createSelector(
-  [getCampersSelector, getFilterValueSelector],
-  (getCampersSelector, getFilterValueSelector) => {
-    return [];
-  }
-);

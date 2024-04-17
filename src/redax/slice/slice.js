@@ -20,10 +20,12 @@ const initialState = {
 const handleFulfildAllCampers = (state, { payload, meta }) => {
   if (meta.arg === 1) {
     state.campers.items = payload;
+    state.itemsFiltered = payload;
     state.campers.isLoading = false;
     state.campers.responseLength = payload.length;
   } else {
     state.campers.items.push(...payload);
+    state.itemsFiltered.push(...payload);
     state.campers.isLoading = false;
     state.campers.responseLength = payload.length;
   }
@@ -42,8 +44,7 @@ const campersSlice = createSlice({
   initialState,
   reducers: {
     setItemsFiltered: (state, { payload }) => {
-      console.log(payload);
-      state.campers.itemsFiltered = filterCampers(current(state.campers.items), payload);
+      state.itemsFiltered = filterCampers(current(state.campers.items), payload);
     },
 
     setFavorite: (state, { payload }) => {

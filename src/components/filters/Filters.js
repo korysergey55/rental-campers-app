@@ -13,7 +13,7 @@ const Filters = () => {
     transmission: false,
     details: { airConditioner: false, kitchen: false, TV: false, shower: false },
     form: {
-      van: false,
+      panelTruck: false,
       fullyIntegrated: false,
       alcove: false,
     },
@@ -78,7 +78,7 @@ const Filters = () => {
               name="airConditioner"
               onClick={() => handleEquipment('airConditioner')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-airConditioner">
+              <svg className={styles.btnIcon} aria-label="airConditioner">
                 <use href={sprite + '#icon-ac'} />
               </svg>
               AC
@@ -91,7 +91,7 @@ const Filters = () => {
               name="transmission"
               onClick={() => handleEquipment('transmission')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-transmission">
+              <svg className={styles.btnIcon} aria-label="transmission">
                 <use href={sprite + '#icon-automatic'} />
               </svg>
               Automatic
@@ -104,7 +104,7 @@ const Filters = () => {
               name="kitchen"
               onClick={() => handleEquipment('kitchen')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-kitchen">
+              <svg className={styles.btnIcon} aria-label="kitchen">
                 <use href={sprite + '#icon-kitchen'} />
               </svg>
               Kitchen
@@ -117,7 +117,7 @@ const Filters = () => {
               name="TV"
               onClick={() => handleEquipment('TV')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-TV">
+              <svg className={styles.btnIcon} aria-label="TV">
                 <use href={sprite + '#icon-tv'} />
               </svg>
               TV
@@ -130,7 +130,7 @@ const Filters = () => {
               name="shower"
               onClick={() => handleEquipment('shower')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-shower">
+              <svg className={styles.btnIcon} aria-label="shower">
                 <use href={sprite + '#icon-showerWc'} />
               </svg>
               Shower/WC
@@ -141,12 +141,12 @@ const Filters = () => {
         <ul className={styles.list}>
           <li className={styles.item}>
             <button
-              className={btnSelected.form.van ? styles.buttonActive : styles.button}
+              className={btnSelected.form.panelTruck ? styles.buttonActive : styles.button}
               type="button"
-              name="van"
-              onClick={() => handleVinicleForm('van')}
+              name="panelTruck"
+              onClick={() => handleVinicleForm('panelTruck')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-van">
+              <svg className={styles.btnIcon} aria-label="van">
                 <use href={sprite + '#icon-van'} />
               </svg>
               Van
@@ -159,7 +159,7 @@ const Filters = () => {
               name="fullyIntegrated"
               onClick={() => handleVinicleForm('fullyIntegrated')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-fullyIntegrated">
+              <svg className={styles.btnIcon} aria-label="fullyIntegrated">
                 <use href={sprite + '#icon-fullyIntegrated'} />
               </svg>
               Fully Integrated
@@ -172,7 +172,7 @@ const Filters = () => {
               name="alcove"
               onClick={() => handleVinicleForm('alcove')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-alcove">
+              <svg className={styles.btnIcon} aria-label="alcove">
                 <use href={sprite + '#icon-alcove'} />
               </svg>
               Alcove
