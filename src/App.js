@@ -6,7 +6,6 @@ import { getAllCampersThunk } from './redax/thunks/thunks';
 
 import Headroom from 'react-headroom';
 import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
 import Loader from './components/loader/Loader';
 
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
@@ -40,7 +39,6 @@ const App = () => {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </Suspense>
-      <Footer />
     </div>
   );
 };

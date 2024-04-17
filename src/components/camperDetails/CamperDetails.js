@@ -1,11 +1,13 @@
-import React from 'react';
+import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import Lightbox from 'yet-another-react-lightbox';
 
 import styles from './styles.module.scss';
 import sprite from '../../sourses/icons/sprite.svg';
 
 const CamperDetails = ({ item }) => {
+  const [open, setOpen] = useState(false);
   return (
     <>
       {item && (
@@ -14,7 +16,7 @@ const CamperDetails = ({ item }) => {
             <h2 className={styles.title}>{item.name}</h2>
             <div className={styles.wripper}>
               <div className={styles.reviewsWripper}>
-                <svg className={styles.reviewsIcon} aria-label="icon-star">
+                <svg className={styles.reviewsIcon} aria-label="star">
                   <use href={sprite + '#icon-star'} />
                 </svg>
                 <p className={styles.reviewsText}>
@@ -22,7 +24,7 @@ const CamperDetails = ({ item }) => {
                 </p>
               </div>
               <div className={styles.locationWripper}>
-                <svg className={styles.locationIcon} aria-label="icon-location">
+                <svg className={styles.locationIcon} aria-label="location">
                   <use href={sprite + '#icon-location'} />
                 </svg>
                 <p className={styles.locationText}>{item.location}</p>
@@ -35,7 +37,7 @@ const CamperDetails = ({ item }) => {
             <ul className={styles.imageList}>
               {item?.gallery?.map(image => (
                 <li className={styles.imageWripper} key={uuidv4()}>
-                  <img className={styles.image} src={image} alt={item.name + 'image'} />
+                  <img className={styles.image} src={image} alt={item.name} onClick={() => setOpen(true)} />
                 </li>
               ))}
             </ul>
@@ -56,6 +58,15 @@ const CamperDetails = ({ item }) => {
           </div>
         </li>
       )}
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        slides={[
+          ...item?.gallery?.map(item => ({
+            src: item,
+          })),
+        ]}
+      />
     </>
   );
 };

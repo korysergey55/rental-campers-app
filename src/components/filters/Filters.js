@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setFilter, setItemsFiltered } from '../../redax/slice/slice';
 
 import styles from './styles.module.scss';
 import sprite from '../../sourses/icons/sprite.svg';
 
 const Filters = () => {
+  const dispatch = useDispatch();
   const [location, setLocation] = useState({ location: '' });
-  const [btnSelected, setbtnSelected] = useState({
-    ac: false,
-    automatic: false,
-    kitchen: false,
-    tv: false,
-    showerWc: false,
-    van: false,
-    fullyIntegrated: false,
-    alcove: false,
+
+  const [btnSelected, setBtnSelected] = useState({
+    transmission: false,
+    details: { airConditioner: false, kitchen: false, TV: false, shower: false },
+    form: {
+      van: false,
+      fullyIntegrated: false,
+      alcove: false,
+    },
   });
 
   const handleChangeLocation = evt => {
@@ -22,21 +25,35 @@ const Filters = () => {
   };
 
   const handleEquipment = name => {
-    setbtnSelected(prev => ({
+    if (name === 'transmission') {
+      setBtnSelected(prev => ({
+        ...prev,
+        [name]: !prev[name],
+      }));
+    } else {
+      setBtnSelected(prev => ({
+        ...prev,
+        details: { ...prev.details, [name]: !prev.details[name] },
+      }));
+    }
+  };
+
+  const handleVinicleForm = name => {
+    setBtnSelected(prev => ({
       ...prev,
-      [name]: !prev[name],
+      form: { ...prev.form, [name]: !prev.form[name] },
     }));
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log(btnSelected, location);
-    console.log(evt);
+    dispatch(setFilter({ ...location, ...btnSelected }));
+    dispatch(setItemsFiltered({ ...location, ...btnSelected }));
   };
 
   return (
     <div className={styles.container}>
-      <form className={styles.form} name="filterForm" onSubmit={handleSubmit}>
+      <form className={styles.form} id="filterForm" onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <label className={styles.label} htmlFor="location">
             Location
@@ -56,12 +73,12 @@ const Filters = () => {
         <ul className={styles.list}>
           <li className={styles.item}>
             <button
-              className={btnSelected.ac ? styles.buttonActive : styles.button}
+              className={btnSelected.details.airConditioner ? styles.buttonActive : styles.button}
               type="button"
-              name="ac"
-              onClick={() => handleEquipment('ac')}
+              name="airConditioner"
+              onClick={() => handleEquipment('airConditioner')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-ac">
+              <svg className={styles.btnIcon} aria-label="icon-airConditioner">
                 <use href={sprite + '#icon-ac'} />
               </svg>
               AC
@@ -69,12 +86,12 @@ const Filters = () => {
           </li>
           <li className={styles.item}>
             <button
-              className={btnSelected.automatic ? styles.buttonActive : styles.button}
+              className={btnSelected.transmission ? styles.buttonActive : styles.button}
               type="button"
-              name="automatic"
-              onClick={() => handleEquipment('automatic')}
+              name="transmission"
+              onClick={() => handleEquipment('transmission')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-automatic">
+              <svg className={styles.btnIcon} aria-label="icon-transmission">
                 <use href={sprite + '#icon-automatic'} />
               </svg>
               Automatic
@@ -82,7 +99,7 @@ const Filters = () => {
           </li>
           <li className={styles.item}>
             <button
-              className={btnSelected.kitchen ? styles.buttonActive : styles.button}
+              className={btnSelected.details.kitchen ? styles.buttonActive : styles.button}
               type="button"
               name="kitchen"
               onClick={() => handleEquipment('kitchen')}
@@ -95,12 +112,12 @@ const Filters = () => {
           </li>
           <li className={styles.item}>
             <button
-              className={btnSelected.tv ? styles.buttonActive : styles.button}
+              className={btnSelected.details.TV ? styles.buttonActive : styles.button}
               type="button"
-              name="tv"
-              onClick={() => handleEquipment('tv')}
+              name="TV"
+              onClick={() => handleEquipment('TV')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-tv">
+              <svg className={styles.btnIcon} aria-label="icon-TV">
                 <use href={sprite + '#icon-tv'} />
               </svg>
               TV
@@ -108,12 +125,12 @@ const Filters = () => {
           </li>
           <li className={styles.item}>
             <button
-              className={btnSelected.showerWc ? styles.buttonActive : styles.button}
+              className={btnSelected.details.shower ? styles.buttonActive : styles.button}
               type="button"
-              name="showerWc"
-              onClick={() => handleEquipment('showerWc')}
+              name="shower"
+              onClick={() => handleEquipment('shower')}
             >
-              <svg className={styles.btnIcon} aria-label="icon-showerWc">
+              <svg className={styles.btnIcon} aria-label="icon-shower">
                 <use href={sprite + '#icon-showerWc'} />
               </svg>
               Shower/WC
@@ -124,10 +141,10 @@ const Filters = () => {
         <ul className={styles.list}>
           <li className={styles.item}>
             <button
-              className={btnSelected.van ? styles.buttonActive : styles.button}
+              className={btnSelected.form.van ? styles.buttonActive : styles.button}
               type="button"
               name="van"
-              onClick={() => handleEquipment('van')}
+              onClick={() => handleVinicleForm('van')}
             >
               <svg className={styles.btnIcon} aria-label="icon-van">
                 <use href={sprite + '#icon-van'} />
@@ -137,10 +154,10 @@ const Filters = () => {
           </li>
           <li className={styles.item}>
             <button
-              className={btnSelected.fullyIntegrated ? styles.buttonActive : styles.button}
+              className={btnSelected.form.fullyIntegrated ? styles.buttonActive : styles.button}
               type="button"
               name="fullyIntegrated"
-              onClick={() => handleEquipment('fullyIntegrated')}
+              onClick={() => handleVinicleForm('fullyIntegrated')}
             >
               <svg className={styles.btnIcon} aria-label="icon-fullyIntegrated">
                 <use href={sprite + '#icon-fullyIntegrated'} />
@@ -150,10 +167,10 @@ const Filters = () => {
           </li>
           <li className={styles.item}>
             <button
-              className={btnSelected.alcove ? styles.buttonActive : styles.button}
+              className={btnSelected.form.alcove ? styles.buttonActive : styles.button}
               type="button"
               name="alcove"
-              onClick={() => handleEquipment('alcove')}
+              onClick={() => handleVinicleForm('alcove')}
             >
               <svg className={styles.btnIcon} aria-label="icon-alcove">
                 <use href={sprite + '#icon-alcove'} />
@@ -162,7 +179,7 @@ const Filters = () => {
             </button>
           </li>
         </ul>
-        <button type="submit" className={styles.button} onClick={handleSubmit}>
+        <button type="submit" htmlFor="filterForm" className={styles.button} onClick={handleSubmit}>
           Search
         </button>
       </form>

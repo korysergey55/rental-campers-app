@@ -8,7 +8,7 @@ import { persistStore } from 'redux-persist';
 const persistConfigFavorites = {
   key: 'favorites',
   storage,
-  whitelist: ['campers'],
+  whitelist: ['campers', 'itemsFiltered'],
 };
 
 export const store = configureStore({

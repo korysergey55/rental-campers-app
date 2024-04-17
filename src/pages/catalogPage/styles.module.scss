@@ -1,6 +1,8 @@
 @import '../../sourses/styles/variebles.scss';
 
 .container {
+  width: 100%;
+  min-height: 100vh;
   padding: 24px;
   .wripper {
     display: flex;
@@ -8,7 +10,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 20px;
- }
+  }
 
   .button {
     display: block;
@@ -44,6 +46,6 @@
 
     .wripper {
       flex-wrap: nowrap;
-        }
+    }
   }
 }

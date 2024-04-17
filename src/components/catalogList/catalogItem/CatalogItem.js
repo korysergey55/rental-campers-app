@@ -27,7 +27,7 @@ const CatalogItem = ({ item }) => {
   return (
     <li className={styles.item}>
       <div className={styles.imageWripper}>
-        <img className={styles.image} src={item.gallery[0]} alt={item.name + 'image'} />
+        <img className={styles.image} src={item.gallery[0]} alt={item.name} />
       </div>
       <div className={styles.contentWripper}>
         <div className={styles.titleWripper}>
@@ -39,7 +39,7 @@ const CatalogItem = ({ item }) => {
             </h2>
             <svg
               className={favorites.includes(item._id) ? styles.favoriteIconActive : styles.favoriteIcon}
-              aria-label="icon-favorite"
+              aria-label="favorite"
             >
               <use href={sprite + '#icon-favorite'} onClick={onChangeFavorite} />
             </svg>
@@ -47,7 +47,7 @@ const CatalogItem = ({ item }) => {
         </div>
         <div className={styles.wripper}>
           <div className={styles.reviewsWripper}>
-            <svg className={styles.reviewsIcon} aria-label="icon-star">
+            <svg className={styles.reviewsIcon} aria-label="star">
               <use href={sprite + '#icon-star'} />
             </svg>
             <p className={styles.reviewsText}>
@@ -55,7 +55,7 @@ const CatalogItem = ({ item }) => {
             </p>
           </div>
           <div className={styles.locationWripper}>
-            <svg className={styles.locationIcon} aria-label="icon-location">
+            <svg className={styles.locationIcon} aria-label="location">
               <use href={sprite + '#icon-location'} />
             </svg>
             <p className={styles.locationText}>{item.location}</p>

@@ -13,6 +13,7 @@ import App from './App';
 import 'normalize.css';
 import './index.css';
 import './sourses/styles/styles.scss';
+import 'yet-another-react-lightbox/styles.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

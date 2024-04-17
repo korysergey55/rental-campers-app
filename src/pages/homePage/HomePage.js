@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Footer from '../../components/footer/Footer';
+import VideoContent from '../../components/videoContent/VideoContent';
+
 import styles from './styles.module.scss';
 import image from '../../sourses/images/home-1.jpg';
 import image2 from '../../sourses/images/home-4.jpg';
@@ -18,7 +21,7 @@ const HomePage = () => {
         <ul className={styles.list}>
           <li className={styles.item}>
             <div className={styles.imageWripper}>
-              <img className={styles.img} src={image} alt="image" />
+              <img className={styles.img} src={image} alt="Why choose us" />
             </div>
             <h3 className={styles.discription}>Free quote without obligations</h3>
             <p className={styles.text}>
@@ -35,7 +38,7 @@ const HomePage = () => {
           </li>
           <li className={styles.item}>
             <div className={styles.imageWripper}>
-              <img className={styles.img} src={image2} alt="image" />
+              <img className={styles.img} src={image2} alt="Why choose us" />
             </div>
             <h3 className={styles.discription}>Something for every travel budget</h3>
             <p className={styles.text}>
@@ -53,7 +56,7 @@ const HomePage = () => {
           </li>
           <li className={styles.item}>
             <div className={styles.imageWripper}>
-              <img className={styles.img} src={image3} alt="image" />
+              <img className={styles.img} src={image3} alt="Why choose us" />
             </div>
             <h3 className={styles.discription}>Leave all your worries at home</h3>
             <p className={styles.text}>
@@ -70,6 +73,7 @@ const HomePage = () => {
             </button>
           </li>
         </ul>
+        <VideoContent />
         <h2 className={styles.subtitle}>Enjoy ultimate freedom traveling by RV</h2>
         <p className={styles.text}>
           An RV trip gives you the freedom to travel at your own pace to wherever you want to go. Whether you always
@@ -81,6 +85,7 @@ const HomePage = () => {
         </p>
         <div className={styles.viev}></div>
       </div>
+      <Footer />
     </section>
   );
 };

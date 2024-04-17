@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
+import { filterCampers } from '../../utiles';
 import { getAllCampersThunk } from '../thunks/thunks';
 
 const initialState = {
@@ -10,7 +11,8 @@ const initialState = {
     itemId: '',
     favorites: [],
   },
-  filter: '',
+  itemsFiltered: [],
+  filter: null,
   modal: false,
   bookFormData: {},
 };
@@ -39,8 +41,12 @@ const campersSlice = createSlice({
   name: 'campers',
   initialState,
   reducers: {
-    setFavorite: (state, { payload }) => {
+    setItemsFiltered: (state, { payload }) => {
       console.log(payload);
+      state.campers.itemsFiltered = filterCampers(current(state.campers.items), payload);
+    },
+
+    setFavorite: (state, { payload }) => {
       if (state.campers.favorites.includes(payload)) {
         state.campers.favorites = state.campers.favorites.filter(item => item !== payload);
       } else {
@@ -65,7 +71,7 @@ const campersSlice = createSlice({
     },
 
     resetFilter: state => {
-      state.filter = '';
+      state.filter = null;
     },
   },
   extraReducers: builder => {
@@ -75,6 +81,14 @@ const campersSlice = createSlice({
       .addCase(getAllCampersThunk.rejected, handleRejected);
   },
 });
-export const { setCampers, setModal, setCamperId, setBookFormData, setFavorite, setFilter, resetFilter } =
-  campersSlice.actions;
+export const {
+  setCampers,
+  setModal,
+  setCamperId,
+  setBookFormData,
+  setFavorite,
+  setFilter,
+  resetFilter,
+  setItemsFiltered,
+} = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;
