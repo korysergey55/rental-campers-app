@@ -1,0 +1,16 @@
+export const categoriesDataDetails = [
+  'airConditioner',
+  'bathroom',
+  'kitchen',
+  'beds',
+  'TV',
+  'CD',
+  'radio',
+  'shower',
+  'toilet',
+  'freezer',
+  'hob',
+  'microwave',
+  'gas',
+  'water',
+];

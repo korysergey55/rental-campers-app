@@ -9,7 +9,9 @@ Application for a company that provides camper van rental services in Ukraine. T
 
 Technical task
 
-- According to the layout, implement a card announcing the rental of a camper.
+- According to the layout
+  https://www.figma.com/file/fnMWH0eBB7NnoqdAiiKWsQ/Test?type=design&node-id=0-1&mode=design&t=oacPC5pwxsn6BXEW-0
+  implement a card announcing the rental of a camper.
 - 4 ads should be rendered on the first page of the catalog, and the rest of them - after clicking on the Load more
   button.
 - If you click on the "heart" button on the ad card, it should be added to the list of favorites, and the color of the

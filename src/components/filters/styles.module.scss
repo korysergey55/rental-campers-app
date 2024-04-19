@@ -1,6 +1,8 @@
 @import '../../sourses/styles/variebles.scss';
 
 .container {
+  width: 100%;
+  max-width: 500px;
   .form {
     .inputContainer {
       display: flex;
@@ -49,7 +51,7 @@
     }
     .list {
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;

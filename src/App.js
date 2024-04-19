@@ -7,6 +7,7 @@ import { getAllCampersThunk } from './redax/thunks/thunks';
 import Headroom from 'react-headroom';
 import Header from './components/header/Header';
 import Loader from './components/loader/Loader';
+import Modal from './components/modal/Modal';
 
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 const CatalogPage = lazy(() => import('./pages/catalogPage/CatalogPage'));
@@ -31,7 +32,14 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:camperId" element={<CamperDetailsPage />}>
+          <Route
+            path="/catalog/:camperId"
+            element={
+              <Modal>
+                <CamperDetailsPage />
+              </Modal>
+            }
+          >
             <Route path="features" element={<Features />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>

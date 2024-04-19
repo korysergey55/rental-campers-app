@@ -1,23 +1,41 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setFilter, setItemsFiltered } from '../../redax/slice/slice';
+import { categoriesDataDetails } from '../../sourses/data/categoriesData';
 
 import styles from './styles.module.scss';
 import sprite from '../../sourses/icons/sprite.svg';
+
+const initialState = {
+  transmission: false,
+  details: {
+    airConditioner: false,
+    bathroom: false,
+    kitchen: false,
+    beds: false,
+    TV: false,
+    CD: false,
+    radio: false,
+    shower: false,
+    toilet: false,
+    freezer: false,
+    hob: false,
+    microwave: false,
+    gas: false,
+    water: false,
+  },
+  form: {
+    panelTruck: false,
+    fullyIntegrated: false,
+    alcove: false,
+  },
+};
 
 const Filters = () => {
   const dispatch = useDispatch();
   const [location, setLocation] = useState({ location: '' });
 
-  const [btnSelected, setBtnSelected] = useState({
-    transmission: false,
-    details: { airConditioner: false, kitchen: false, TV: false, shower: false },
-    form: {
-      panelTruck: false,
-      fullyIntegrated: false,
-      alcove: false,
-    },
-  });
+  const [btnSelected, setBtnSelected] = useState(initialState);
 
   const handleChangeLocation = evt => {
     const { value, name } = evt.target;
@@ -71,71 +89,21 @@ const Filters = () => {
         <p className={styles.subtitle}>Filters</p>
         <h2 className={styles.title}>Vehicle equipment</h2>
         <ul className={styles.list}>
-          <li className={styles.item}>
-            <button
-              className={btnSelected.details.airConditioner ? styles.buttonActive : styles.button}
-              type="button"
-              name="airConditioner"
-              onClick={() => handleEquipment('airConditioner')}
-            >
-              <svg className={styles.btnIcon} aria-label="airConditioner">
-                <use href={sprite + '#icon-ac'} />
-              </svg>
-              AC
-            </button>
-          </li>
-          <li className={styles.item}>
-            <button
-              className={btnSelected.transmission ? styles.buttonActive : styles.button}
-              type="button"
-              name="transmission"
-              onClick={() => handleEquipment('transmission')}
-            >
-              <svg className={styles.btnIcon} aria-label="transmission">
-                <use href={sprite + '#icon-automatic'} />
-              </svg>
-              Automatic
-            </button>
-          </li>
-          <li className={styles.item}>
-            <button
-              className={btnSelected.details.kitchen ? styles.buttonActive : styles.button}
-              type="button"
-              name="kitchen"
-              onClick={() => handleEquipment('kitchen')}
-            >
-              <svg className={styles.btnIcon} aria-label="kitchen">
-                <use href={sprite + '#icon-kitchen'} />
-              </svg>
-              Kitchen
-            </button>
-          </li>
-          <li className={styles.item}>
-            <button
-              className={btnSelected.details.TV ? styles.buttonActive : styles.button}
-              type="button"
-              name="TV"
-              onClick={() => handleEquipment('TV')}
-            >
-              <svg className={styles.btnIcon} aria-label="TV">
-                <use href={sprite + '#icon-tv'} />
-              </svg>
-              TV
-            </button>
-          </li>
-          <li className={styles.item}>
-            <button
-              className={btnSelected.details.shower ? styles.buttonActive : styles.button}
-              type="button"
-              name="shower"
-              onClick={() => handleEquipment('shower')}
-            >
-              <svg className={styles.btnIcon} aria-label="shower">
-                <use href={sprite + '#icon-showerWc'} />
-              </svg>
-              Shower/WC
-            </button>
-          </li>
+          {categoriesDataDetails?.map((item, index) => (
+            <li className={styles.item} key={index}>
+              <button
+                className={btnSelected.details[item] ? styles.buttonActive : styles.button}
+                type="button"
+                name={item}
+                onClick={() => handleEquipment(item)}
+              >
+                <svg className={styles.btnIcon} aria-label={item}>
+                  <use href={sprite + `#${item}`} />
+                </svg>
+                {item}
+              </button>
+            </li>
+          ))}
         </ul>
         <h2 className={styles.title2}>Vehicle type</h2>
         <ul className={styles.list}>

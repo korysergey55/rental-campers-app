@@ -6,7 +6,6 @@ import { getCamperById } from '../../redax/selectors/selectors';
 import { setCamperId } from '../../redax/slice/slice';
 
 import CamperDetails from '../../components/camperDetails/CamperDetails';
-import Footer from '../../components/footer/Footer';
 import styles from './styles.module.scss';
 
 const CamperDetailsPage = () => {
@@ -21,12 +20,9 @@ const CamperDetailsPage = () => {
   }, [camperId, dispatch]);
 
   return (
-    <section className={styles.camperDetailsPage}>
-      <div className={styles.container}>
-        <CamperDetails item={item} />
-      </div>
-      <Footer />
-    </section>
+    <div className={styles.container}>
+      <CamperDetails item={item} />
+    </div>
   );
 };
 
