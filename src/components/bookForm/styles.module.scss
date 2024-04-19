@@ -45,7 +45,7 @@
       background-color: $brandColorWhite;
 
       &:focus {
-        outline: $brandColorYelow;
+        outline: 1px solid $brandColorYelow;
       }
     }
     .button {
